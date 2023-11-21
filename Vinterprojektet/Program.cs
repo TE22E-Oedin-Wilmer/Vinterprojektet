@@ -11,6 +11,11 @@ Raylib.SetTargetFPS(60);
 
 Texture2D jungleBackground = Raylib.LoadTexture("JunglePixel.png");
 
+Texture2D StickIdle = Raylib.LoadTexture("Vinterprojektet/StickChar/StickIdle/StickIdle1.png");
+
+Texture2D StickRun = Raylib.LoadTexture("Vinterprojektet/StickChar/StickRun");
+
+Texture2D StickJump = Raylib.LoadTexture("Vinterprojektet/StickChar/StickJump/StickJump1.png");
 
 jungleBackground.Width = 1000;
 jungleBackground.Height = 800;
@@ -21,6 +26,8 @@ jungleBackground.Height = 800;
 
 while (!Raylib.WindowShouldClose())
 {
+
+
 
 
 
