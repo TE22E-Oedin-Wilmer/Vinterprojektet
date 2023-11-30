@@ -11,15 +11,17 @@ Raylib.SetTargetFPS(60);
 int stickx = 200;
 int sticky = 200;
 
+string stickCondition;
 
+stickCondition = "idle";
 
 Texture2D jungleBackground = Raylib.LoadTexture("JunglePixel.png");
 
 Texture2D StickIdle = Raylib.LoadTexture("StickIdle1.png");
 
-Texture2D StickRun = Raylib.LoadTexture("StickRunCollage");
+Texture2D StickRun = Raylib.LoadTexture("StickRun1.png");
 
-Texture2D StickJump = Raylib.LoadTexture("Vinterprojektet/StickChar/StickJump/StickJump1.png");
+Texture2D StickJump = Raylib.LoadTexture("StickJump1.png");
 
 jungleBackground.Width = 1000;
 jungleBackground.Height = 800;
@@ -27,40 +29,60 @@ jungleBackground.Height = 800;
 StickIdle.Width = 300;
 StickIdle.Height = 300;
 
-StickRun.Width = 300;
-StickRun.Height = 300;
+StickRun.Width = 100;
+StickRun.Height = 100;
 
 StickJump.Width = 50;
 StickJump.Height = 50;
-  
+
 
 
 
 while (!Raylib.WindowShouldClose())
 {
 
-Raylib.BeginDrawing();
+    Raylib.BeginDrawing();
 
-Raylib.ClearBackground(Color.GREEN);
-
-
-
-Raylib.DrawTexture(jungleBackground, 0, 0, Color.WHITE);
-
-if (Raylib.IsKeyUp()) {
-
-Raylib.DrawTexture(StickIdle, stickx, sticky, Color.WHITE);
-}
+    Raylib.ClearBackground(Color.GREEN);
 
 
 
-else if (Raylib.IsKeyDown(KeyboardKey.KEY_A)) {
+    Raylib.DrawTexture(jungleBackground, 0, 0, Color.WHITE);
 
-Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
 
-stickx --;
 
-}
+    if (stickCondition == "idle")
+    {
 
-Raylib.EndDrawing();
+        Raylib.DrawTexture(StickIdle, stickx, sticky, Color.WHITE);
+
+    }
+
+    else if (stickCondition == "runL")
+    {
+    Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
+    stickx -= 5;
+    }
+
+    else if (stickCondition == "runR")
+    {
+    Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
+    stickx -= 5;
+    }
+
+
+  
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_A)){
+        stickCondition = "runL";
+    }
+
+    else if  (Raylib.IsKeyDown(KeyboardKey.KEY_D)){
+        stickCondition = "runR";
+    }
+
+    
+
+
+
+    Raylib.EndDrawing();
 }

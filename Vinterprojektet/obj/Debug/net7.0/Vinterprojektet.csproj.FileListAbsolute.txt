@@ -23,3 +23,5 @@ C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\JunglePixel.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickRunCollage.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickIdle1.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickJump1.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickRun1.png
