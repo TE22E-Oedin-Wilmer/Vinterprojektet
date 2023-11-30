@@ -26,14 +26,14 @@ Texture2D StickJump = Raylib.LoadTexture("StickJump1.png");
 jungleBackground.Width = 1000;
 jungleBackground.Height = 800;
 
-StickIdle.Width = 300;
-StickIdle.Height = 300;
+StickIdle.Width = 200;
+StickIdle.Height = 200;
 
-StickRun.Width = 100;
-StickRun.Height = 100;
+StickRun.Width = 200;
+StickRun.Height = 200;
 
-StickJump.Width = 50;
-StickJump.Height = 50;
+StickJump.Width = 200;
+StickJump.Height = 200;
 
 
 
@@ -61,13 +61,13 @@ while (!Raylib.WindowShouldClose())
     else if (stickCondition == "runL")
     {
     Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
-    stickx -= 5;
+    stickx --;
     }
 
     else if (stickCondition == "runR")
     {
     Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
-    stickx -= 5;
+    stickx ++;
     }
 
 
@@ -80,7 +80,16 @@ while (!Raylib.WindowShouldClose())
         stickCondition = "runR";
     }
 
-    
+
+
+        if (Raylib.IsKeyReleased(KeyboardKey.KEY_A)){
+        stickCondition = "idle";
+    }
+
+    else if  (Raylib.IsKeyReleased(KeyboardKey.KEY_D)){
+        stickCondition = "idle";
+    }
+
 
 
 
