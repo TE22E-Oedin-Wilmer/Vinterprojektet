@@ -77,7 +77,7 @@ while (!Raylib.WindowShouldClose())
   if (currentRoom == 0)
   {
     Raylib.DrawTexture(startBackground, 0, 0, Color.WHITE);
-    Raylib.DrawText("Press Alt + Enter for fullscreen", 100, 100, 50, Color.WHITE);
+    Raylib.DrawText("Press Alt + Enter to toggle fullscreen", 100, 100, 30, Color.WHITE);
 
     if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER) && (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_ALT) || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_ALT)))
     {
@@ -87,7 +87,6 @@ while (!Raylib.WindowShouldClose())
       {
         // If we are fullscreen, go back to previous size
         Raylib.SetWindowSize(screenWidth, screenHeight);
-        Raylib.DrawText("Press Alt + Enter for fullscreen", 100, 100, 50, Color.WHITE);
       }
       else
       {
