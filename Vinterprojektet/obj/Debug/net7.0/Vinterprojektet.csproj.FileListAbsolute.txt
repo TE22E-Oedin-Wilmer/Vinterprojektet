@@ -26,3 +26,5 @@ C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickJump1.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickRun1.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickRunL1.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceGameEnd.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceGameStart.png
