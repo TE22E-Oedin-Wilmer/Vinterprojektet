@@ -74,7 +74,7 @@ while (!Raylib.WindowShouldClose())
 
 
 
-  if (currentRoom == 0)
+  if (currentRoom == 0) // ROOM 0**********************************************************************************************************
   {
     Raylib.DrawTexture(startBackground, 0, 0, Color.WHITE);
     Raylib.DrawText("Press Alt + Enter to toggle fullscreen", 100, 100, 30, Color.WHITE);
@@ -105,10 +105,10 @@ while (!Raylib.WindowShouldClose())
     {
       currentRoom = 1;
     }
-  }
+  }             //*************************************************************************************************************
 
 
-  else if (currentRoom == 1)
+  else if (currentRoom == 1)  //ROOM 1**************************************************************************************************************
   {
     // Kod för rum 1
 
