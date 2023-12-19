@@ -15,7 +15,7 @@ Raylib.InitWindow(screenWidth, screenHeight, "Gaming");
 Raylib.SetTargetFPS(60);
 
 int stickx = 200;
-int sticky = 200;
+int sticky = 600;
 
 string stickCondition;
 
@@ -23,7 +23,9 @@ stickCondition = "idle";
 
 Texture2D startBackground = Raylib.LoadTexture("SpaceGameStart.png");
 
-Texture2D jungleBackground = Raylib.LoadTexture("JunglePixel.png");
+Texture2D stationBackground = Raylib.LoadTexture("SpaceStation.png");
+
+Texture2D rocketTakeoff = Raylib.LoadTexture("RocketTakeoff.png");
 
 Texture2D endBackground = Raylib.LoadTexture("SpaceGameEnd.png");
 
@@ -35,29 +37,34 @@ Texture2D StickRunL = Raylib.LoadTexture("StickRunL1.png");
 
 Texture2D StickJump = Raylib.LoadTexture("StickJump1.png");
 
+Texture2D Rocket = Raylib.LoadTexture("RelPixelRoket.png");
+
 startBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
 startBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
 
-jungleBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
-jungleBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
+stationBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
+stationBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
+
+rocketTakeoff.Width = Raylib.GetMonitorWidth(monitordisplay);
+rocketTakeoff.Height = Raylib.GetMonitorHeight(monitordisplay);
 
 endBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
 endBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
 
-StickIdle.Width = 200;
-StickIdle.Height = 200;
+StickIdle.Width = 350;
+StickIdle.Height = 350;
 
-StickRun.Width = 200;
-StickRun.Height = 200;
+StickRun.Width = 350;
+StickRun.Height = 350;
 
-StickRunL.Width = 200;
-StickRunL.Height = 200;
+StickRunL.Width = 350;
+StickRunL.Height = 350;
 
-StickJump.Width = 200;
-StickJump.Height = 200;
+StickJump.Width = 350;
+StickJump.Height = 350;
 
-
-
+Rocket.Width = 400;
+Rocket.Height = 400;
 
 
 int currentRoom = 0;
@@ -112,8 +119,8 @@ while (!Raylib.WindowShouldClose())
   {
     // Kod för rum 1
 
-    Raylib.DrawTexture(jungleBackground, 0, 0, Color.WHITE);
-
+    Raylib.DrawTexture(stationBackground, 0, 0, Color.WHITE);
+    Raylib.DrawTexture(Rocket, 1500, 600, Color.WHITE);
 
 
     if (stickCondition == "idle")
@@ -126,13 +133,13 @@ while (!Raylib.WindowShouldClose())
     else if (stickCondition == "runL")
     {
       Raylib.DrawTexture(StickRunL, stickx, sticky, Color.WHITE);
-      stickx--;
+      stickx -= 2;
     }
 
     else if (stickCondition == "runR")
     {
       Raylib.DrawTexture(StickRun, stickx, sticky, Color.WHITE);
-      stickx++;
+      stickx += 2;
     }
 
 
@@ -159,16 +166,35 @@ while (!Raylib.WindowShouldClose())
       stickCondition = "idle";
     }
 
+    if (stickx >= 1400) {
 
+      Raylib.DrawText("Press [E] to enter your rocket", 900 , 200, 50, Color.SKYBLUE);
 
+    }
+
+    if (stickx >= 1400 && Raylib.IsKeyPressed(KeyboardKey.KEY_E)) {
+
+      currentRoom = 2;
+
+    }
 
   }
+
   else if (currentRoom == 2)
   {
-    // Kod för rum 2
+    Raylib.ClearBackground(Color.BLUE);
+    Raylib.DrawTexture(rocketTakeoff, 0, 0, Color.WHITE);
+    
+    
+    // Raylib.WaitTime(3);
+    // Raylib.DrawText("Press [ENTER] to continue", 300, 200, 70, Color.GREEN);
+    
   }
 
-
+  else if (currentRoom == 3)
+  {
+    // Kod för rum 3
+  }
 
   Raylib.EndDrawing();
 }

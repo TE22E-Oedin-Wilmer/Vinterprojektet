@@ -28,3 +28,6 @@ C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\StickRunL1.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceGameEnd.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceGameStart.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceStation.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\RelPixelRoket.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\RocketTakeoff.png
