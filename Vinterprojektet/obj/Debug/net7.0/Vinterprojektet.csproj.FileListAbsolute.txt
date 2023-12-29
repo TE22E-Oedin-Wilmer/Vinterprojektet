@@ -31,3 +31,5 @@ C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SpaceStation.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\RelPixelRoket.png
 C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\RocketTakeoff.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\SidewayRocketWfire.png
+C:\Users\wilmer.odin\Documents\ProgrammeringKurs\Vinterprojektet\Vinterprojektet\bin\Debug\net7.0\LongPixel Space.png

@@ -19,6 +19,11 @@ int frames=0, time=0;
 int stickx = 200;
 int sticky = 600;
 
+int rocketFx = -100;
+int rocketFy = 300;
+
+int PixelSpaceX = 0;
+
 string stickCondition;
 
 stickCondition = "idle";
@@ -28,6 +33,10 @@ Texture2D startBackground = Raylib.LoadTexture("SpaceGameStart.png");
 Texture2D stationBackground = Raylib.LoadTexture("SpaceStation.png");
 
 Texture2D rocketTakeoff = Raylib.LoadTexture("RocketTakeoff.png");
+
+Texture2D spaceBattleBground = Raylib.LoadTexture("LongPixel Space.png");
+
+Texture2D sidewayRocket = Raylib.LoadTexture("SidewayRocketWfire.png");
 
 Texture2D endBackground = Raylib.LoadTexture("SpaceGameEnd.png");
 
@@ -50,6 +59,10 @@ stationBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
 rocketTakeoff.Width = Raylib.GetMonitorWidth(monitordisplay);
 rocketTakeoff.Height = Raylib.GetMonitorHeight(monitordisplay);
 
+spaceBattleBground.Width = 9999;
+spaceBattleBground.Height = Raylib.GetMonitorHeight(monitordisplay);
+
+
 endBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
 endBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
 
@@ -68,6 +81,8 @@ StickJump.Height = 350;
 Rocket.Width = 400;
 Rocket.Height = 400;
 
+sidewayRocket.Width = 600;
+sidewayRocket.Height = 450;
 
 int currentRoom = 0;
 
@@ -180,13 +195,14 @@ while (!Raylib.WindowShouldClose())
 
     }
 
-  }
-
-  else if (currentRoom == 2)
+  } //************************************************************************************************************
+  
+  else if (currentRoom == 2) //ROOM 2 *****************************************************************************
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(rocketTakeoff, 0, 0, Color.WHITE);
     
+ 
     frames++;    //increase the frames int by 1 every frame
 
     if(frames==60) {
@@ -202,13 +218,28 @@ while (!Raylib.WindowShouldClose())
       }
     }
     
-  }
+  } //**************************************************************************************************************
 
-  else if (currentRoom == 3)
+  else if (currentRoom == 3) //ROOM 3 *********************************************************************************
   {
     Raylib.ClearBackground(Color.BLUE);
+    Raylib.DrawTexture(spaceBattleBground, PixelSpaceX, 0, Color.WHITE);
 
-  }
+    PixelSpaceX -= 10;
+
+    if (PixelSpaceX <= -7000){
+      PixelSpaceX = -100;
+    }
+
+    Raylib.DrawTexture(sidewayRocket, rocketFx, rocketFy, Color.WHITE);
+
+    if (rocketFx <= 100){
+
+      rocketFx += 10;
+
+    }
+
+  } // *************************************************************************************************************
 
   else if (currentRoom == 4)
   {
