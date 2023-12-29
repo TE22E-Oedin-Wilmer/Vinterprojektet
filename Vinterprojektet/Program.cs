@@ -14,6 +14,8 @@ int monitordisplay = Raylib.GetCurrentMonitor();
 Raylib.InitWindow(screenWidth, screenHeight, "Gaming");
 Raylib.SetTargetFPS(60);
 
+int frames=0, time=0;   
+
 int stickx = 200;
 int sticky = 600;
 
@@ -168,7 +170,7 @@ while (!Raylib.WindowShouldClose())
 
     if (stickx >= 1400) {
 
-      Raylib.DrawText("Press [E] to enter your rocket", 900 , 200, 50, Color.SKYBLUE);
+      Raylib.DrawText("Press [E] to enter your rocket", 900 , 200, 50, Color.GREEN);
 
     }
 
@@ -185,15 +187,34 @@ while (!Raylib.WindowShouldClose())
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(rocketTakeoff, 0, 0, Color.WHITE);
     
-    
-    // Raylib.WaitTime(3);
-    // Raylib.DrawText("Press [ENTER] to continue", 300, 200, 70, Color.GREEN);
+    frames++;    //increase the frames int by 1 every frame
+
+    if(frames==60) {
+                   time++;     //increase time every 60 frames, so each time this goes up by one, a second has passed
+                   frames = 0;
+          } 
+
+    if(time >= 3){
+      Raylib.DrawText("Press [ENTER] to continue", 300, 200, 70, Color.GREEN);
+
+      if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER)){
+        currentRoom = 3;
+      }
+    }
     
   }
 
   else if (currentRoom == 3)
   {
-    // Kod för rum 3
+    Raylib.ClearBackground(Color.BLUE);
+
+  }
+
+  else if (currentRoom == 4)
+  {
+    Raylib.ClearBackground(Color.BLUE);
+      
+      //Room 4 code
   }
 
   Raylib.EndDrawing();
