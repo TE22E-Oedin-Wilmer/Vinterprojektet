@@ -302,6 +302,10 @@ while (!Raylib.WindowShouldClose())
       rocketFy += 15;
     }
 
+    // if (Meteor1x <= 701 && Meteor1x >= 99 && Meteor1y + 151 >= rocketFy -1 && Meteor1y + 151 <= ){
+    //   currentRoom = 4;
+    // }
+
 
   } // *************************************************************************************************************
 
