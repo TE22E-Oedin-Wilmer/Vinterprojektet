@@ -22,6 +22,17 @@ int sticky = 600;
 int rocketFx = -100;
 int rocketFy = 300;
 
+Random generator = new();
+
+int Meteor1x = generator.Next(2000, 5000);
+int Meteor1y = generator.Next(0, 1080);
+
+int Meteor2x = generator.Next(2000, 5000);
+int Meteor2y = generator.Next(0, 1080);
+
+int Meteor3x = generator.Next(2000, 5000);
+int Meteor3y = generator.Next(0, 1080);
+
 int PixelSpaceX = 0;
 
 string stickCondition;
@@ -49,6 +60,14 @@ Texture2D StickRunL = Raylib.LoadTexture("StickRunL1.png");
 Texture2D StickJump = Raylib.LoadTexture("StickJump1.png");
 
 Texture2D Rocket = Raylib.LoadTexture("RelPixelRoket.png");
+
+Texture2D Meteor1 = Raylib.LoadTexture("MeteorPixel.png");
+
+Texture2D Meteor2 = Raylib.LoadTexture("MeteorPixel.png");
+
+Texture2D Meteor3 = Raylib.LoadTexture("MeteorPixel.png");
+
+
 
 startBackground.Width = Raylib.GetMonitorWidth(monitordisplay);
 startBackground.Height = Raylib.GetMonitorHeight(monitordisplay);
@@ -83,6 +102,17 @@ Rocket.Height = 400;
 
 sidewayRocket.Width = 600;
 sidewayRocket.Height = 450;
+
+Meteor1.Width = 150;
+Meteor1.Height = 150;
+
+Meteor2.Width = 100;
+Meteor2.Height = 100;
+
+Meteor3.Width = 50;
+Meteor3.Height = 50;
+
+
 
 int currentRoom = 0;
 
@@ -224,12 +254,22 @@ while (!Raylib.WindowShouldClose())
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(spaceBattleBground, PixelSpaceX, 0, Color.WHITE);
+  
 
+    Meteor1x -= 20;
+    Meteor2x -= 25;
+    Meteor3x -= 30;
+
+ 
     PixelSpaceX -= 10;
 
     if (PixelSpaceX <= -7000){
       PixelSpaceX = -100;
     }
+
+    Raylib.DrawTexture(Meteor1, Meteor1x, Meteor1y, Color.WHITE);
+    Raylib.DrawTexture(Meteor2, Meteor2x, Meteor2y, Color.WHITE);
+    Raylib.DrawTexture(Meteor3, Meteor3x, Meteor3y, Color.WHITE);
 
     Raylib.DrawTexture(sidewayRocket, rocketFx, rocketFy, Color.WHITE);
 
@@ -238,6 +278,30 @@ while (!Raylib.WindowShouldClose())
       rocketFx += 10;
 
     }
+
+    if (Meteor1x <= -100){
+    Meteor1x = generator.Next(2000, 5000);
+    Meteor1y = generator.Next(0, 1080);
+    }
+
+    if (Meteor2x <= -100){
+    Meteor2x = generator.Next(2000, 5000);
+    Meteor2y = generator.Next(0, 1080);
+    }
+
+    if (Meteor3x <= -100){
+    Meteor3x = generator.Next(2000, 5000);
+    Meteor3y = generator.Next(0, 1080);
+    }
+
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_W)){      
+      rocketFy -= 15;
+    }
+
+    else if (Raylib.IsKeyDown(KeyboardKey.KEY_S)){      
+      rocketFy += 15;
+    }
+
 
   } // *************************************************************************************************************
 
