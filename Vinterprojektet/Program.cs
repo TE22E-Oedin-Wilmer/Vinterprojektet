@@ -4,17 +4,17 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
-int display = Raylib.GetCurrentMonitor();
+int display = Raylib.GetCurrentMonitor();    //get monitor display
 
-const int screenWidth = 800;
-const int screenHeight = 450;
+const int screenWidth = 800;                 //original window size
+const int screenHeight = 450;                //original window size
 
-int monitordisplay = Raylib.GetCurrentMonitor();
+int monitordisplay = Raylib.GetCurrentMonitor();    //get monitor display
 
-Raylib.InitWindow(screenWidth, screenHeight, "Gaming");
-Raylib.SetTargetFPS(60);
+Raylib.InitWindow(screenWidth, screenHeight, "Gaming");    //set window size
+Raylib.SetTargetFPS(60);                                   //set target fps for the window
 
-int frames = 0, time = 0;
+int frames = 0, time = 0;             //create int variables
 
 int frames2 = 0, time2 = 0;
 
@@ -26,9 +26,9 @@ int sticky = 600;
 int rocketFx = -100;
 int rocketFy = 300;
 
-Random generator = new();
+Random generator = new();               //create an rng
 
-int Meteor1x = generator.Next(2000, 5000);
+int Meteor1x = generator.Next(2000, 5000);        //more int variables
 int Meteor1y = generator.Next(0, 1080);
 
 int Meteor2x = generator.Next(2000, 5000);
@@ -37,15 +37,15 @@ int Meteor2y = generator.Next(0, 1080);
 int Meteor3x = generator.Next(2000, 5000);
 int Meteor3y = generator.Next(0, 1080);
 
-int PixelSpaceX = 0;
+int PixelSpaceX = 0;       
 
-string stickCondition;
+string stickCondition;        //string variable
 
-int HP = 3;
+int HP = 3;                   //even more int varables
 
 int score = 0;
 
-string currentHP = $"HP = {HP}";
+string currentHP = $"HP = {HP}";              //more string varables
 
 string currentScore = $"Score = {score}";
 
