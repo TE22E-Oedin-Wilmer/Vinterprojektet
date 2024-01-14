@@ -18,7 +18,6 @@ int frames = 0, time = 0;             //create int variables
 
 int frames2 = 0, time2 = 0;
 
-int frames3 = 0, time3 = 0;
 
 int stickx = 200;
 int sticky = 600;
@@ -37,7 +36,7 @@ int Meteor2y = generator.Next(0, 1080);
 int Meteor3x = generator.Next(2000, 5000);
 int Meteor3y = generator.Next(0, 1080);
 
-int PixelSpaceX = 0;       
+int PixelSpaceX = 0;
 
 string stickCondition;        //string variable
 
@@ -462,8 +461,8 @@ while (!Raylib.WindowShouldClose())
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, frames3, time3);
-
+    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    Raylib.DrawText("You might need some more practice :/", 100, 150, 50, Color.ORANGE);
     //Room 4 code
 
   }
@@ -472,7 +471,8 @@ while (!Raylib.WindowShouldClose())
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, frames3, time3);
+    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    Raylib.DrawText("Decent job, but you can do better", 100, 150, 50, Color.YELLOW);
     //Room 5 code
   }
 
@@ -480,22 +480,39 @@ while (!Raylib.WindowShouldClose())
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, frames3, time3);
+    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    Raylib.DrawText("Sick job bro!", 100, 150, 50, Color.LIME);
     //Room 6 code
   }
 
 
-  static void GameOver(int score, int monitordisplay, int frames, int time)
+  static void GameOver(int score, int monitordisplay, int currentRoom, int HP, string currentHP, string currentScore)
   {
-    
-    
-    Raylib.DrawText("GameOver", Raylib.GetMonitorHeight(monitordisplay) / 2, Raylib.GetMonitorHeight(monitordisplay) / 3, 200, Color.RED);
-    Raylib.DrawText($"Your score: {score}", (Raylib.GetMonitorWidth(monitordisplay) / 2) - 300, 700, 80, Color.GOLD);
+    int textY = Raylib.GetMonitorHeight(monitordisplay) / 4;
+    int textX = Raylib.GetMonitorHeight(monitordisplay) / 2;
+    int textSize = 200;
+    List<string> GameOverText = new List<string>();       //skapar en lista för rummet och lägger in vad som ska va i rummet
+    GameOverText.Add("GameOver");
+    GameOverText.Add($"Your score: {score}");
+    GameOverText.Add("Press [ENTER] to restart");
+    GameOverText.Add("or [ESC] to exit");
 
-    for (int i = 0; i < 10; i++)
+    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER)){
+      currentRoom = 3;
+      HP = 3;
+      currentHP = $"HP = {HP}";
+      score = 0;
+      currentScore = $"Score = {score}";
+    }
+    
+    for (int i = 0; i < GameOverText.Count; i++)
     {
-       
-}
+      Raylib.DrawText(GameOverText[i], textX, textY, textSize, Color.RED);
+      textY = textY + 180;
+      textX = textX - 130;
+      textSize = textSize - 40;
+    }
+
   }
   Raylib.EndDrawing();
 

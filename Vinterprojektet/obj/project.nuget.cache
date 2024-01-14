@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9kg8Vdz7f/8RQsXArePKWOysAuswwaDKVTz2AB+WpzbujdGQ/wmLzpDmqO1j2JAJrSP3OFCqSXtXk2MxfmGlaA==",
+  "dgSpecHash": "Tsa7iRuLfF7wVyyzoUJ1/A7rllPFOtkD2qNdz7wZa2bqjXCsodjQQVggfV30mSslpnw48+HOzERQ77YONDXp0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wilmer.odin\\Documents\\ProgrammeringKurs\\Vinterprojektet\\Vinterprojektet\\Vinterprojektet.csproj",
+  "projectFilePath": "c:\\Users\\wilmer.odin\\Documents\\ProgrammeringKurs\\Vinterprojektet\\Vinterprojektet\\Vinterprojektet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wilmer.odin\\.nuget\\packages\\raylib-cs\\5.0.0\\raylib-cs.5.0.0.nupkg.sha512",
     "C:\\Users\\wilmer.odin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
