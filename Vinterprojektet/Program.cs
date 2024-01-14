@@ -461,32 +461,55 @@ while (!Raylib.WindowShouldClose())
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    GameOver(score, monitordisplay);
     Raylib.DrawText("You might need some more practice :/", 100, 150, 50, Color.ORANGE);
     //Room 4 code
-
+    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+    {
+      currentRoom = 3;
+      HP = 3;
+      currentHP = $"HP = {HP}";
+      score = 0;
+      currentScore = $"Score = {score}";
+    }
   }
 
   else if (currentRoom == 5)
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    GameOver(score, monitordisplay);
     Raylib.DrawText("Decent job, but you can do better", 100, 150, 50, Color.YELLOW);
     //Room 5 code
+    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+    {
+      currentRoom = 3;
+      HP = 3;
+      currentHP = $"HP = {HP}";
+      score = 0;
+      currentScore = $"Score = {score}";
+    }
   }
 
   else if (currentRoom == 6)
   {
     Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
-    GameOver(score, monitordisplay, currentRoom, HP, currentHP, currentScore);
+    GameOver(score, monitordisplay);
     Raylib.DrawText("Sick job bro!", 100, 150, 50, Color.LIME);
     //Room 6 code
+    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+    {
+      currentRoom = 3;
+      HP = 3;
+      currentHP = $"HP = {HP}";
+      score = 0;
+      currentScore = $"Score = {score}";
+    }
   }
 
 
-  static void GameOver(int score, int monitordisplay, int currentRoom, int HP, string currentHP, string currentScore)
+  static void GameOver(int score, int monitordisplay)
   {
     int textY = Raylib.GetMonitorHeight(monitordisplay) / 4;
     int textX = Raylib.GetMonitorHeight(monitordisplay) / 2;
@@ -497,14 +520,7 @@ while (!Raylib.WindowShouldClose())
     GameOverText.Add("Press [ENTER] to restart");
     GameOverText.Add("or [ESC] to exit");
 
-    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER)){
-      currentRoom = 3;
-      HP = 3;
-      currentHP = $"HP = {HP}";
-      score = 0;
-      currentScore = $"Score = {score}";
-    }
-    
+
     for (int i = 0; i < GameOverText.Count; i++)
     {
       Raylib.DrawText(GameOverText[i], textX, textY, textSize, Color.RED);
@@ -512,8 +528,8 @@ while (!Raylib.WindowShouldClose())
       textX = textX - 130;
       textSize = textSize - 40;
     }
-
   }
+
   Raylib.EndDrawing();
 
 }
