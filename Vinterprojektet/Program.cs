@@ -16,6 +16,10 @@ Raylib.SetTargetFPS(60);
 
 int frames = 0, time = 0;
 
+int frames2 = 0, time2 = 0;
+
+int frames3 = 0, time3 = 0;
+
 int stickx = 200;
 int sticky = 600;
 
@@ -39,7 +43,13 @@ string stickCondition;
 
 int HP = 3;
 
-string currentHP = $"HP =" + HP;
+int score = 0;
+
+string currentHP = $"HP = {HP}";
+
+string currentScore = $"Score = {score}";
+
+
 
 stickCondition = "idle";
 
@@ -124,18 +134,8 @@ int currentRoom = 0;
 while (!Raylib.WindowShouldClose())
 {
 
-
-  Raylib.BeginDrawing();
-
-  Raylib.ClearBackground(Color.GREEN);
-
-
-
-
-  if (currentRoom == 0) // ROOM 0**********************************************************************************************************
+  if (currentRoom == 0)
   {
-    Raylib.DrawTexture(startBackground, 0, 0, Color.WHITE);
-    Raylib.DrawText("Press Alt + Enter to toggle fullscreen", 100, 100, 30, Color.WHITE);
 
     if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER) && (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_ALT) || Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_ALT)))
     {
@@ -156,6 +156,203 @@ while (!Raylib.WindowShouldClose())
       // Toggle fullscreen state
       Raylib.ToggleFullscreen();
     }
+
+
+  }
+
+  else if (currentRoom == 1)  //ROOM 1 LOGIK *****************************************************************************
+  {
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
+    {
+      stickCondition = "runL";
+    }
+
+    else if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
+    {
+      stickCondition = "runR";
+    }
+
+
+
+    if (Raylib.IsKeyReleased(KeyboardKey.KEY_A))
+    {
+      stickCondition = "idle";
+    }
+
+    else if (Raylib.IsKeyReleased(KeyboardKey.KEY_D))
+    {
+      stickCondition = "idle";
+    }
+
+
+    if (stickx + 90 >= Raylib.GetMonitorWidth(monitordisplay))
+    {
+      stickx = Raylib.GetMonitorWidth(monitordisplay) - 90;
+    }
+
+    if (stickx <= -15)
+    {
+      stickx = -15;
+    }
+
+    if (stickx >= 1400 && Raylib.IsKeyPressed(KeyboardKey.KEY_E))
+    {
+
+      currentRoom = 2;
+
+    }
+
+  }
+
+  else if (currentRoom == 2)  //ROOM 2 LOGIK *****************************************************************************
+  {
+
+    frames++;    //increase the frames int by 1 every frame
+
+    if (frames == 60)
+    {
+      time++;     //increase time every 60 frames, so each time this goes up by one, a second has passed
+      frames = 0;
+    }
+
+  }
+
+  else if (currentRoom == 3) //ROOM 3 LOGIK *****************************************************************************
+  {
+    if (time2 > 3 && HP > 0)
+    {
+      score++;
+      currentScore = $"Score = {score}";
+    }
+
+    PixelSpaceX -= 10;
+
+    if (PixelSpaceX <= -7000)
+    {
+      PixelSpaceX = -100;
+    }
+
+    if (rocketFx <= 100)
+    {
+
+      rocketFx += 10;
+
+    }
+
+    if (Meteor1x <= -100)
+    {
+      Meteor1x = generator.Next(2000, 5000);
+      Meteor1y = generator.Next(0, 1080);
+    }
+
+    if (Meteor2x <= -100)
+    {
+      Meteor2x = generator.Next(2000, 5000);
+      Meteor2y = generator.Next(0, 1080);
+    }
+
+    if (Meteor3x <= -100)
+    {
+      Meteor3x = generator.Next(2000, 5000);
+      Meteor3y = generator.Next(0, 1080);
+    }
+
+    if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
+    {
+      rocketFy -= 15;
+    }
+
+    else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
+    {
+      rocketFy += 15;
+    }
+
+    if (rocketFy + 310 >= Raylib.GetMonitorHeight(monitordisplay))
+    {
+      rocketFy = Raylib.GetMonitorHeight(monitordisplay) - 310;
+    }
+
+    if (rocketFy + 110 <= 0)
+    {
+      rocketFy = -110;
+    }
+
+    if (Meteor1x <= 550 && Meteor1x >= 99 && Meteor1y >= rocketFy && Meteor1y <= rocketFy + 250)
+    {
+      HP--;
+      Meteor1x = generator.Next(2000, 5000);
+      Meteor1y = generator.Next(0, 1080);
+      currentHP = $"HP = {HP}";
+    }
+
+    if (Meteor2x <= 550 && Meteor2x >= 99 && Meteor2y >= rocketFy && Meteor2y <= rocketFy + 250)
+    {
+      HP--;
+      Meteor2x = generator.Next(2000, 5000);
+      Meteor2y = generator.Next(0, 1080);
+      currentHP = $"HP = {HP}";
+    }
+
+    if (Meteor3x <= 550 && Meteor3x >= 99 && Meteor3y >= rocketFy && Meteor3y <= rocketFy + 250)
+    {
+      HP--;
+      Meteor3x = generator.Next(2000, 5000);
+      Meteor3y = generator.Next(0, 1080);
+      currentHP = $"HP = {HP}";
+    }
+
+    frames2++;    //increase the frames int by 1 every frame
+
+    if (frames2 == 60)
+    {
+      time2++;     //increase time every 60 frames, so each time this goes up by one, a second has passed
+      frames2 = 0;
+    }
+
+    if (HP < 1 && score < 1000)
+    {
+      currentRoom = 4;
+    }
+
+    if (HP < 1 && score > 1000 && score < 3000)
+    {
+      currentRoom = 5;
+    }
+
+  }
+
+  if (HP < 1 && score > 3000)
+  {
+    currentRoom = 6;
+  }
+
+  else if (currentRoom == 4)
+  {
+
+  }
+
+  else if (currentRoom == 5)
+  {
+
+  }
+
+  else if (currentRoom == 6)
+  {
+
+  }
+
+  Raylib.BeginDrawing(); // BEGIN DRAWING *************************************************************************************************
+
+  Raylib.ClearBackground(Color.GREEN);
+
+
+
+
+  if (currentRoom == 0) // ROOM 0**********************************************************************************************************
+  {
+    Raylib.DrawTexture(startBackground, 0, 0, Color.WHITE);
+    Raylib.DrawText("Press Alt + Enter to toggle fullscreen", 100, 100, 30, Color.WHITE);
+
 
     Raylib.DrawText("Press [P] to play", screenWidth / 2 + 110, screenHeight, 100, Color.GOLD);
 
@@ -194,40 +391,10 @@ while (!Raylib.WindowShouldClose())
     }
 
 
-
-    if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
-    {
-      stickCondition = "runL";
-    }
-
-    else if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
-    {
-      stickCondition = "runR";
-    }
-
-
-
-    if (Raylib.IsKeyReleased(KeyboardKey.KEY_A))
-    {
-      stickCondition = "idle";
-    }
-
-    else if (Raylib.IsKeyReleased(KeyboardKey.KEY_D))
-    {
-      stickCondition = "idle";
-    }
-
     if (stickx >= 1400)
     {
 
-      Raylib.DrawText("Press [E] to enter your rocket", 900, 200, 50, Color.GREEN);
-
-    }
-
-    if (stickx >= 1400 && Raylib.IsKeyPressed(KeyboardKey.KEY_E))
-    {
-
-      currentRoom = 2;
+      Raylib.DrawText("Press [E] to enter your rocket", 500, 200, 50, Color.GREEN);
 
     }
 
@@ -235,17 +402,7 @@ while (!Raylib.WindowShouldClose())
 
   else if (currentRoom == 2) //ROOM 2 *****************************************************************************
   {
-    Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(rocketTakeoff, 0, 0, Color.WHITE);
-
-
-    frames++;    //increase the frames int by 1 every frame
-
-    if (frames == 60)
-    {
-      time++;     //increase time every 60 frames, so each time this goes up by one, a second has passed
-      frames = 0;
-    }
 
     if (time >= 3)
     {
@@ -261,37 +418,29 @@ while (!Raylib.WindowShouldClose())
 
   else if (currentRoom == 3) //ROOM 3 *********************************************************************************
   {
-    Raylib.ClearBackground(Color.BLUE);
     Raylib.DrawTexture(spaceBattleBground, PixelSpaceX, 0, Color.WHITE);
 
-    frames = 0; time = 0;
-    frames++;    //increase the frames int by 1 every frame
 
-    if (frames == 60)
-    {
-      time++;     //increase time every 60 frames, so each time this goes up by one, a second has passed
-      frames = 0;
-    }
-
-    if (time <= 3)
+    if (time2 <= 3)
     {
       Raylib.DrawText("Don't get hit by the asteroids ", 200, 200, 60, Color.BLUE);
     }
 
-    else if (time >= 3)
+    else if (time2 >= 3)
     {
       Raylib.DrawText(currentHP, 50, 20, 30, Color.RED);
+      Raylib.DrawText(currentScore, 250, 20, 30, Color.GOLD);
 
       Meteor1x -= 20;
       Meteor2x -= 25;
       Meteor3x -= 30;
     }
 
-    PixelSpaceX -= 10;
 
-    if (PixelSpaceX <= -7000)
+
+    for (int i = 0; i > 0; i++)
     {
-      PixelSpaceX = -100;
+
     }
 
     Raylib.DrawTexture(Meteor1, Meteor1x, Meteor1y, Color.WHITE);
@@ -300,40 +449,7 @@ while (!Raylib.WindowShouldClose())
 
     Raylib.DrawTexture(sidewayRocket, rocketFx, rocketFy, Color.WHITE);
 
-    if (rocketFx <= 100)
-    {
 
-      rocketFx += 10;
-
-    }
-
-    if (Meteor1x <= -100)
-    {
-      Meteor1x = generator.Next(2000, 5000);
-      Meteor1y = generator.Next(0, 1080);
-    }
-
-    if (Meteor2x <= -100)
-    {
-      Meteor2x = generator.Next(2000, 5000);
-      Meteor2y = generator.Next(0, 1080);
-    }
-
-    if (Meteor3x <= -100)
-    {
-      Meteor3x = generator.Next(2000, 5000);
-      Meteor3y = generator.Next(0, 1080);
-    }
-
-    if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
-    {
-      rocketFy -= 15;
-    }
-
-    else if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
-    {
-      rocketFy += 15;
-    }
 
     // if (Meteor1x <= 701 && Meteor1x >= 99 && Meteor1y + 151 >= rocketFy -1 && Meteor1y + 151 <= ){
     //   currentRoom = 4;
@@ -345,9 +461,42 @@ while (!Raylib.WindowShouldClose())
   else if (currentRoom == 4)
   {
     Raylib.ClearBackground(Color.BLUE);
+    Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
+    GameOver(score, monitordisplay, frames3, time3);
 
     //Room 4 code
+
   }
 
+  else if (currentRoom == 5)
+  {
+    Raylib.ClearBackground(Color.BLUE);
+    Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
+    GameOver(score, monitordisplay, frames3, time3);
+    //Room 5 code
+  }
+
+  else if (currentRoom == 6)
+  {
+    Raylib.ClearBackground(Color.BLUE);
+    Raylib.DrawTexture(endBackground, 0, 0, Color.WHITE);
+    GameOver(score, monitordisplay, frames3, time3);
+    //Room 6 code
+  }
+
+
+  static void GameOver(int score, int monitordisplay, int frames, int time)
+  {
+    
+    
+    Raylib.DrawText("GameOver", Raylib.GetMonitorHeight(monitordisplay) / 2, Raylib.GetMonitorHeight(monitordisplay) / 3, 200, Color.RED);
+    Raylib.DrawText($"Your score: {score}", (Raylib.GetMonitorWidth(monitordisplay) / 2) - 300, 700, 80, Color.GOLD);
+
+    for (int i = 0; i < 10; i++)
+    {
+       
+}
+  }
   Raylib.EndDrawing();
+
 }
